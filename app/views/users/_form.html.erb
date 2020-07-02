@@ -1,0 +1,94 @@
+<%= content_tag :div, id: 'user-form', class: 'columns', data: { user: user.to_json(except: [:created_at, :updated_at]) } do %>
+  <div class='column'>
+    <div id="form" class="card">
+      <div class="card-content">
+        <h2 class="title">Cadastrar Usuário</h2>
+ 
+        <label>Nome</label>
+        <input type='text' v-model="user.name" class="input">
+    
+        <label>Email:</label>
+        <input type='text' v-model="user.email" class="input">
+    
+        <label>Telefone:</label>
+        <input type='text' v-model="user.phone" class="input">
+    
+        <label>Descrição</label>
+        <input type='text' v-model="user.description" class="input">
+    
+        <label>Experiencia 1</label>
+        <textarea class="textarea" v-model="user.exp1"></textarea>
+    
+        <label>Experiencia 2</label>
+        <textarea class="textarea" v-model="user.exp2"></textarea>
+    
+        <label>Experiencia 3</label>
+        <textarea class="textarea" v-model="user.exp3"></textarea>
+    
+        <label>Formação</label>
+        <textarea class="textarea" v-model="user.education"></textarea>
+    
+        <label>Extras</label>
+        <textarea class="textarea" v-model="user.extras"></textarea>
+    
+        <label>Sexo</label>
+        <select v-model="user.gender" class="select">
+          <option>Masculino</option>
+          <option>Feminino</option>
+        </select>
+      </div>
+      <div class="card-footer">
+        <button @click="saveUser" class="button is-link">Criar Currículo</button>
+      </div>
+    </div>
+  </div>
+ 
+  <div class='column is-two-thirds preview card'>
+    <div id="cv-preview" class="card-content">
+      <h3 class="center title name">{{ user.name }}</h3>
+      <p class="center subtitle"><b v-if="user.phone != null">Telefone de contato:</b> {{ user.phone }}    <b v-if="user.email != null">Email:</b> {{ user.email }}    <b v-if="user.gender != null">Sexo:</b> {{ user.gender }}</p>
+ 
+      <div class="description">
+        <p class="subtitle" v-if="user.description != null">Descrição</p>
+        <p>
+          {{ user.description }}
+        </p>
+      </div>
+    
+      <div class="exp">
+        <p class="subtitle" v-if="user.exp1 != null">Experiencia 1</p>
+        <p>
+          {{ user.exp1 }}
+        </p>
+      </div>
+    
+      <div class="exp">
+        <p class="subtitle" v-if="user.exp2 != null">Experiencia 2</p>
+        <p>
+          {{ user.exp2 }}
+        </p>
+      </div>
+    
+      <div class="exp">
+        <p class="subtitle" v-if="user.exp3 != null">Experiencia 3</p>
+        <p>
+          {{ user.exp3 }}
+        </p>
+      </div>
+    
+      <div class="education">
+        <p class="subtitle" v-if="user.education != null">Formação</p>
+        <p>
+          {{ user.education }}
+        </p>
+      </div>
+    
+      <div class="extras">
+        <p class="subtitle" v-if="user.extras != null">Extras</p>
+        <p>
+          {{ user.extras }}
+        </p>
+      </div>
+    </div>
+  </div>
+<% end %>
